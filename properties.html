@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Available Houses - To-Let Finder
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
+</head>
+
+
+<body>
+
+
+<header>
+
+    <h1>
+        🏠 To-Let Finder
+    </h1>
+
+</header>
+
+
+<main>
+
+    <h2>
+        Available Houses
+    </h2>
+
+    <p>
+        Find rental houses that match your requirements.
+    </p>
+
+
+    <div class="filter-box">
+
+        <h3>
+            Filter Houses
+        </h3>
+
+
+        <label for="max-rent">
+            Maximum Rent
+        </label>
+
+        <input
+            type="number"
+            id="max-rent"
+            placeholder="Example: 15000"
+        >
+
+
+        <label for="property-type-filter">
+            Property Type
+        </label>
+
+        <select id="property-type-filter">
+
+            <option value="">
+                Any Property Type
+            </option>
+
+            <option value="1 BHK">
+                1 BHK
+            </option>
+
+            <option value="2 BHK">
+                2 BHK
+            </option>
+
+            <option value="3 BHK">
+                3 BHK
+            </option>
+
+            <option value="4 BHK">
+                4 BHK
+            </option>
+
+        </select>
+
+
+        <label for="bedrooms-filter">
+            Bedrooms
+        </label>
+
+        <select id="bedrooms-filter">
+
+            <option value="">
+                Any Bedrooms
+            </option>
+
+            <option value="1">
+                1 Bedroom
+            </option>
+
+            <option value="2">
+                2 Bedrooms
+            </option>
+
+            <option value="3">
+                3 Bedrooms
+            </option>
+
+            <option value="4">
+                4 Bedrooms
+            </option>
+
+        </select>
+
+
+        <label for="parking-filter">
+            Parking
+        </label>
+
+        <select id="parking-filter">
+
+            <option value="">
+                Any
+            </option>
+
+            <option value="Yes">
+                Parking Available
+            </option>
+
+            <option value="No">
+                No Parking
+            </option>
+
+        </select>
+
+
+        <label for="water-filter">
+            Water
+        </label>
+
+        <select id="water-filter">
+
+            <option value="">
+                Any
+            </option>
+
+            <option value="Yes">
+                Water Available
+            </option>
+
+            <option value="No">
+                Water Not Available
+            </option>
+
+        </select>
+
+
+        <button
+            id="apply-filters"
+            class="search-button"
+        >
+            🔎 Apply Filters
+        </button>
+
+
+        <button
+            id="clear-filters"
+            class="clear-button"
+        >
+            Clear Filters
+        </button>
+
+    </div>
+
+
+    <div id="property-list"></div>
+
+
+</main>
+
+
+<script
+    src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"
+></script>
+
+<script src="script.js"></script>
+
+
+</body>
+
+</html>
