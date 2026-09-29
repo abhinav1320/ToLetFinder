@@ -1,0 +1,455 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    color: #222;
+}
+
+header {
+    background-color: #ffffff;
+    padding: 18px;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 24px;
+}
+
+main {
+    padding: 25px 18px;
+    text-align: center;
+}
+
+main h2 {
+    font-size: 28px;
+    margin-bottom: 12px;
+}
+
+main p {
+    font-size: 16px;
+    line-height: 1.5;
+    margin-bottom: 25px;
+}
+
+button {
+    width: 100%;
+    padding: 14px;
+    margin-bottom: 12px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+}
+#explore-more-button {
+    width:80%;
+    padding: 8px 18px;
+    margin-bottom: 0;
+    font-size: 15px;
+    border-radius: 20px;
+}
+
+.search-box {
+    margin-bottom: 20px;
+}
+
+.search-box input {
+    width: 100%;
+    padding: 14px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+    margin-bottom: 12px;
+    outline: none;
+}
+
+.search-box input:focus {
+    border-color: #555;
+}
+.property-card {
+    background-color: #ffffff;
+    border-radius: 12px;
+    margin-top: 15px;
+    padding: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-align: left;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.18);
+}
+
+.property-card img {
+    width: 140px;
+    height: 110px;
+    object-fit: cover;
+    border-radius: 8px;
+    flex-shrink: 0;
+}
+
+.property-card h3,
+.property-card p,
+.property-card button {
+    margin-left: 16px;
+    margin-right: 16px;
+}
+
+.property-card h3 {
+    margin-top: 16px;
+}
+
+.property-card button {
+    width: calc(100% - 32px);
+    margin-bottom: 16px;
+}
+
+.search-button {
+    display: block;
+    width: 100%;
+    padding: 14px;
+    background-color: #222;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-size: 16px;
+    text-align: center;
+    margin-bottom: 12px;
+}
+.property-details {
+    background-color: #ffffff;
+    border-radius: 12px;
+    overflow: hidden;
+    text-align: left;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.property-details img {
+    width: 100%;
+    height: 240px;
+    object-fit: cover;
+    display: block;
+}
+
+.property-details h2 {
+    font-size: 26px;
+    margin: 18px 16px 8px;
+}
+
+.property-details h3 {
+    font-size: 20px;
+    margin: 12px 16px;
+}
+
+.property-details p {
+    font-size: 16px;
+    line-height: 1.5;
+    margin: 10px 16px;
+}
+
+.property-details button {
+    width: calc(100% - 32px);
+    margin: 20px 16px;
+    background-color: #222;
+    color: white;
+}
+
+.property-info {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    padding: 10px 16px;
+}
+
+.property-info div {
+    background-color: #f5f5f5;
+    padding: 14px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.property-info span {
+    display: block;
+    font-size: 22px;
+    margin-bottom: 5px;
+}
+
+.property-info strong {
+    display: block;
+    font-size: 16px;
+}
+
+.property-info small {
+    display: block;
+    margin-top: 3px;
+    font-size: 13px;
+}
+.owner-section {
+    margin-top: 20px;
+    padding: 16px;
+    border-top: 1px solid #ddd;
+}
+
+.owner-section h3 {
+    margin: 0 0 12px;
+}
+
+.owner-section p {
+    margin: 8px 0;
+}
+
+.owner-section button {
+    margin: 15px 0 0;
+    width: 100%;
+    background-color: #222;
+    color: white;
+}
+form {
+    margin-top: 20px;
+    text-align: left;
+}
+
+form label {
+    display: block;
+    font-size: 15px;
+    font-weight: bold;
+    margin-bottom: 6px;
+}
+
+form input,
+form select,
+form textarea {
+    width: 100%;
+    padding: 13px;
+    margin-bottom: 18px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+    font-family: Arial, sans-serif;
+    outline: none;
+}
+
+form input:focus,
+form select:focus,
+form textarea:focus {
+    border-color: #555;
+}
+
+form textarea {
+    resize: vertical;
+}
+
+form button {
+    width: 100%;
+    background-color: #222;
+    color: white;
+}
+form input[type="file"] {
+    background-color: #f5f5f5;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 14px;
+}
+
+#photo-preview {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+#photo-preview img {
+    width: 100%;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+#photo-preview {
+    margin-bottom: 20px;
+}
+#photo-input {
+    display: none;
+}
+.upload-button {
+    display: block;
+    width: 100%;
+    padding: 13px;
+    background-color: transparent;
+    color: #222;
+    border: 1px solid #222;
+    text-align: center;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-bottom: 12px;
+}
+
+/* ==========================================
+   FILTER BOX
+   ========================================== */
+
+.filter-box {
+    background-color: #ffffff;
+    padding: 18px;
+    border-radius: 12px;
+    margin-top: 20px;
+    margin-bottom: 25px;
+    text-align: left;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+.filter-box h3 {
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.filter-box label {
+    display: block;
+    margin-top: 12px;
+    margin-bottom: 6px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.filter-box input,
+.filter-box select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 15px;
+    background-color: #ffffff;
+}
+
+.filter-box input:focus,
+.filter-box select:focus {
+    outline: none;
+    border-color: #555;
+}
+
+.filter-box .search-button {
+    border: none;
+    margin-top: 18px;
+    cursor: pointer;
+}
+
+.clear-button {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #ffffff;
+    font-size: 15px;
+    cursor: pointer;
+    margin-top: 2px;
+}
+/* ==========================================
+   NEW HOME PAGE
+========================================== */
+
+.home-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px;
+    background-color: #ffffff;
+    border-bottom: 1px solid #ddd;
+}
+
+.home-header h1 {
+    font-size: 18px;
+    white-space: nowrap;
+}
+
+.home-search {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    border: 1px solid #777;
+    border-radius: 20px;
+    padding: 7px 10px;
+}
+
+.home-search span {
+    font-size: 15px;
+}
+
+.home-search input {
+    width: 100%;
+    border: none;
+    outline: none;
+    font-size: 14px;
+    background: transparent;
+}
+
+.profile-button {
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    margin: 0;
+    border: 1px solid #777;
+    border-radius: 50%;
+    background-color: #ffffff;
+    font-size: 18px;
+}
+
+#home-property-list {
+    margin-top: 20px;
+}
+
+#home-property-list .property-card {
+    margin-bottom: 15px;
+}
+.home-search button {
+    width: auto;
+    padding: 6px 10px;
+    margin: 0;
+    font-size: 12px;
+    border-radius: 15px;
+}
+.hero-section {
+    width: 96%;
+    margin: 12px auto;
+    position: relative;
+    overflow: hidden;
+    border-radius: 3px;
+}
+
+.hero-image {
+    width: 100%;
+    height: 230px;
+    object-fit: cover;
+    display: block;
+}
+
+.hero-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 15px;
+    text-align: center;
+}
+
+.hero-content h2 {
+    font-size: 20px;
+    margin: 0 0 6px;
+}
+
+.hero-content p {
+    font-size: 13px;
+    margin: 0 0 10px;
+}
+
+
+
+
+
+
+
+
+

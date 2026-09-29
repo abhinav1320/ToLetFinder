@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>To-Let Finder</title>
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
+</head>
+
+
+<body>
+
+
+    <!-- ==============================
+         HEADER
+    =============================== -->
+
+    <header class="home-header">
+
+        <h1>
+            🏠 To-Let Finder
+        </h1>
+
+
+        <div class="home-search">
+
+            <span>
+                🔍
+            </span>
+
+            <input
+                type="text"
+                id="home-search"
+                placeholder="Search for houses"
+            >
+
+            <button
+                id="home-search-button"
+                type="button"
+            >
+                Search
+            </button>
+
+        </div>
+
+
+        <button
+            class="profile-button"
+            type="button"
+        >
+            👤
+        </button>
+
+    </header>
+
+
+
+    <!-- ==============================
+         MAIN CONTENT
+    =============================== -->
+
+    <main>
+
+    <section class="hero-section">
+
+        <img
+    src="images/Map.jpg"
+    alt="Explore rental properties on map"
+    class="hero-image"
+>
+          
+
+        <div class="hero-content">
+
+            <h2>
+                Find Your Dream Rental Home
+            </h2>
+
+            <p>
+                Explore rental houses available near you.
+            </p>
+
+            <button
+                id="explore-more-button"
+                type="button"
+            >
+                Explore More
+            </button>
+
+        </div>
+
+    </section>
+
+
+<!-- Available Properties -->
+
+<section class="home-properties">
+
+    <h2>
+        Available Houses
+    </h2>
+
+    <div id="home-property-list">
+
+        <p>
+            Loading houses...
+        </p>
+
+    </div>
+
+</section>
+
+
+</main>
+
+
+        
+
+
+
+    <!-- ==============================
+         SUPABASE
+    =============================== -->
+
+    <script
+        src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"
+    ></script>
+
+
+    <!-- ==============================
+         MAIN JAVASCRIPT
+    =============================== -->
+
+    <script src="script.js"></script>
+
+
+</body>
+
+</html>
