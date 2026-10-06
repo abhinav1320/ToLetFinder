@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>To-Let Finder</title>
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
+</head>
+
+
+<body>
+
+
+    <!-- ==============================
+         HEADER
+    =============================== -->
+
+    <header class="home-header">
+
+        <h1>
+            🏠 To-Let Finder
+        </h1>
+
+
+        <div class="home-search">
+
+            <span>
+                🔍
+            </span>
+
+            <input
+                type="text"
+                id="home-search"
+                placeholder="Search for houses"
+            >
+
+            <button
+                id="home-search-button"
+                type="button"
+            >
+                Search
+            </button>
+
+        </div>
+
+
+        <button
+            class="profile-button"
+            type="button"
+        >
+            👤
+        </button>
+
+    </header>
+
+
+
+    <!-- ==============================
+         MAIN CONTENT
+    =============================== -->
+
+    <main>
+
+
+        <!-- ==============================
+             MAP COVER
+        =============================== -->
+
+        <section class="hero-section">
+
+            <img
+                src="images/Map1.png"
+                alt="Explore rental properties on map"
+                class="hero-image"
+            >
+
+            <h2 class="map-cover-title">
+                Find rentals through maps
+            </h2>
+
+            <div class="hero-content">
+
+                <button
+                    id="explore-more-button"
+                    type="button"
+                >
+                    Explore More
+                </button>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ==============================
+             FILTER BUTTON
+        =============================== -->
+
+        <section class="home-filter-section">
+
+    <button
+        id="filters-toggle"
+        class="filters-toggle"
+        type="button"
+        aria-expanded="false"
+    >
+        <span>Filters</span>
+
+        <span id="filters-arrow">
+            ▼
+        </span>
+    </button>
+
+
+    <div
+        id="filters-panel"
+        class="filters-panel"
+        hidden
+    >
+
+
+        <!-- MONTHLY RENT -->
+
+        <div class="filter-item">
+
+            <label>
+                Maximum Monthly Rent
+            </label>
+
+            <button
+                type="button"
+                class="filter-selector"
+                data-filter="rent"
+            >
+
+                <span
+                    id="filter-rent-value"
+                >
+                    Any rent
+                </span>
+
+                <span class="selector-arrow">
+                    ↕
+                </span>
+
+            </button>
+
+
+            <div
+                class="filter-options"
+                id="rent-options"
+            >
+
+                <button
+                    type="button"
+                    data-value=""
+                >
+                    Any rent
+                </button>
+
+                <button
+                    type="button"
+                    data-value="3000"
+                >
+                    ₹3,000/month
+                </button>
+
+                <button
+                    type="button"
+                    data-value="4000"
+                >
+                    ₹4,000/month
+                </button>
+
+                <button
+                    type="button"
+                    data-value="5000"
+                >
+                    ₹5,000/month
+                </button>
+
+                <button
+                    type="button"
+                    data-value="6000"
+                >
+                    ₹6,000/month
+                </button>
+
+                <button
+                    type="button"
+                    data-value="7000"
+                >
+                    ₹7,000/month
+                </button>
+
+                <button
+                    type="button"
+                    data-value="8000"
+                >
+                    ₹8,000/month
+                </button>
+
+                <button
+                    type="button"
+                    data-value="9000"
+                >
+                    ₹9,000/month
+                </button>
+
+                <button
+                    type="button"
+                    data-value="10000"
+                >
+                    ₹10,000/month
+                </button>
+
+                <button
+                    type="button"
+                    data-value="11000"
+                >
+                    ₹11,000/month
+                </button>
+
+                <button
+                    type="button"
+                    data-value="12000"
+                >
+                    ₹12,000/month
+                </button>
+
+                <button
+                    type="button"
+                    data-value="13000"
+                >
+                    ₹13,000/month
+                </button>
+
+                <button
+                    type="button"
+                    data-value="14000"
+                >
+                    ₹14,000/month
+                </button>
+
+                <button
+                    type="button"
+                    data-value="15000"
+                >
+                    ₹15,000/month
+                </button>
+
+                <button
+                    type="button"
+                    data-value="20000"
+                >
+                    ₹20,000/month
+                </button>
+
+                <button
+                    type="button"
+                    data-value="25000"
+                >
+                    ₹25,000/month
+                </button>
+
+                <button
+                    type="button"
+                    data-value="30000"
+                >
+                    ₹30,000/month
+                </button>
+
+                <button
+                    type="button"
+                    data-value="40000"
+                >
+                    ₹40,000/month
+                </button>
+
+                <button
+                    type="button"
+                    data-value="50000"
+                >
+                    ₹50,000/month
+                </button>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- PROPERTY TYPE -->
+
+        <div class="filter-item">
+
+            <label>
+                Property Type
+            </label>
+
+            <button
+                type="button"
+                class="filter-selector"
+                data-filter="property-type"
+            >
+
+                <span
+                    id="filter-property-type-value"
+                >
+                    Any type
+                </span>
+
+                <span class="selector-arrow">
+                    ↕
+                </span>
+
+            </button>
+
+
+            <div
+                class="filter-options"
+                id="property-type-options"
+            >
+
+                <button
+                    type="button"
+                    data-value=""
+                >
+                    Any type
+                </button>
+
+                <button
+                    type="button"
+                    data-value="house"
+                >
+                    House
+                </button>
+
+                <button
+                    type="button"
+                    data-value="flat"
+                >
+                    Flat
+                </button>
+
+                <button
+                    type="button"
+                    data-value="apartment"
+                >
+                    Apartment
+                </button>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- BEDROOMS -->
+
+        <div class="filter-item">
+
+            <label>
+                Bedrooms
+            </label>
+
+            <button
+                type="button"
+                class="filter-selector"
+                data-filter="bedrooms"
+            >
+
+                <span
+                    id="filter-bedrooms-value"
+                >
+                    Any bedrooms
+                </span>
+
+                <span class="selector-arrow">
+                    ↕
+                </span>
+
+            </button>
+
+
+            <div
+                class="filter-options"
+                id="bedrooms-options"
+            >
+
+                <button
+                    type="button"
+                    data-value=""
+                >
+                    Any bedrooms
+                </button>
+
+                <button
+                    type="button"
+                    data-value="1"
+                >
+                    1 Bedroom
+                </button>
+
+                <button
+                    type="button"
+                    data-value="2"
+                >
+                    2 Bedrooms
+                </button>
+
+                <button
+                    type="button"
+                    data-value="3"
+                >
+                    3 Bedrooms
+                </button>
+
+                <button
+                    type="button"
+                    data-value="4"
+                >
+                    4 Bedrooms
+                </button>
+
+                <button
+                    type="button"
+                    data-value="5"
+                >
+                    5+ Bedrooms
+                </button>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- BATHROOMS -->
+
+        <div class="filter-item">
+
+            <label>
+                Bathrooms
+            </label>
+
+            <button
+                type="button"
+                class="filter-selector"
+                data-filter="bathrooms"
+            >
+
+                <span
+                    id="filter-bathrooms-value"
+                >
+                    Any bathrooms
+                </span>
+
+                <span class="selector-arrow">
+                    ↕
+                </span>
+
+            </button>
+
+
+            <div
+                class="filter-options"
+                id="bathrooms-options"
+            >
+
+                <button
+                    type="button"
+                    data-value=""
+                >
+                    Any bathrooms
+                </button>
+
+                <button
+                    type="button"
+                    data-value="1"
+                >
+                    1 Bathroom
+                </button>
+
+                <button
+                    type="button"
+                    data-value="2"
+                >
+                    2 Bathrooms
+                </button>
+
+                <button
+                    type="button"
+                    data-value="3"
+                >
+                    3 Bathrooms
+                </button>
+
+                <button
+                    type="button"
+                    data-value="4"
+                >
+                    4+ Bathrooms
+                </button>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- PARKING -->
+
+        <div class="filter-item">
+
+            <label>
+                Parking
+            </label>
+
+            <button
+                type="button"
+                class="filter-selector"
+                data-filter="parking"
+            >
+
+                <span
+                    id="filter-parking-value"
+                >
+                    Any parking
+                </span>
+
+                <span class="selector-arrow">
+                    ↕
+                </span>
+
+            </button>
+
+
+            <div
+                class="filter-options"
+                id="parking-options"
+            >
+
+                <button
+                    type="button"
+                    data-value=""
+                >
+                    Any parking
+                </button>
+
+                <button
+                    type="button"
+                    data-value="yes"
+                >
+                    Parking available
+                </button>
+
+                <button
+                    type="button"
+                    data-value="no"
+                >
+                    No parking
+                </button>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- WATER -->
+
+        <div class="filter-item">
+
+            <label>
+                Water
+            </label>
+
+            <button
+                type="button"
+                class="filter-selector"
+                data-filter="water"
+            >
+
+                <span
+                    id="filter-water-value"
+                >
+                    Any water
+                </span>
+
+                <span class="selector-arrow">
+                    ↕
+                </span>
+
+            </button>
+
+
+            <div
+                class="filter-options"
+                id="water-options"
+            >
+
+                <button
+                    type="button"
+                    data-value=""
+                >
+                    Any water
+                </button>
+
+                <button
+                    type="button"
+                    data-value="yes"
+                >
+                    Water available
+                </button>
+
+                <button
+                    type="button"
+                    data-value="no"
+                >
+                    No water
+                </button>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- BUTTONS -->
+
+        <div class="filter-actions">
+
+            <button
+                id="apply-filters"
+                type="button"
+            >
+                Apply Filters
+            </button>
+
+            <button
+                id="clear-filters"
+                type="button"
+            >
+                Clear Filters
+            </button>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+        <!-- ==============================
+             AVAILABLE PROPERTIES
+        =============================== -->
+
+        <section class="home-properties">
+
+            <h2>
+                Available Houses
+            </h2>
+
+            <div id="home-property-list">
+
+                <p>
+                    Loading houses...
+                </p>
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- ==============================
+         SUPABASE
+    =============================== -->
+
+    <script
+        src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"
+    ></script>
+
+
+    <!-- ==============================
+         MAIN JAVASCRIPT
+    =============================== -->
+
+    <script src="script.js"></script>
+
+
+</body>
+
+</html>

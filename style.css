@@ -1,0 +1,982 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    color: #222;
+}
+
+header {
+    background-color: #ffffff;
+    padding: 18px;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 24px;
+}
+
+main {
+    padding: 25px 18px;
+    text-align: center;
+}
+
+main h2 {
+    font-size: 28px;
+    margin-bottom: 12px;
+}
+
+main p {
+    font-size: 16px;
+    line-height: 1.5;
+    margin-bottom: 25px;
+}
+
+button {
+    width: 100%;
+    padding: 14px;
+    margin-bottom: 12px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+}
+#explore-more-button {
+    width:80%;
+    padding: 8px 18px;
+    margin-bottom: 0;
+    font-size: 15px;
+    border-radius: 20px;
+}
+
+.search-box {
+    margin-bottom: 20px;
+}
+
+.search-box input {
+    width: 100%;
+    padding: 14px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+    margin-bottom: 12px;
+    outline: none;
+}
+
+.search-box input:focus {
+    border-color: #555;
+}
+.property-card {
+    background-color: #ffffff;
+    border-radius: 12px;
+    margin-top: 15px;
+    padding: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-align: left;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.18);
+}
+
+.property-card img {
+    width: 140px;
+    height: 110px;
+    object-fit: cover;
+    border-radius: 8px;
+    flex-shrink: 0;
+}
+
+.property-card h3,
+.property-card p,
+.property-card button {
+    margin-left: 16px;
+    margin-right: 16px;
+}
+
+.property-card h3 {
+    margin-top: 16px;
+}
+
+.property-card button {
+    width: calc(100% - 32px);
+    margin-bottom: 16px;
+}
+
+.search-button {
+    display: block;
+    width: 100%;
+    padding: 14px;
+    background-color: #222;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-size: 16px;
+    text-align: center;
+    margin-bottom: 12px;
+}
+.property-details {
+    background-color: #ffffff;
+    border-radius: 12px;
+    overflow: hidden;
+    text-align: left;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.property-details img {
+    width: 100%;
+    height: 240px;
+    object-fit: cover;
+    display: block;
+}
+
+.property-details h2 {
+    font-size: 26px;
+    margin: 18px 16px 8px;
+}
+
+.property-details h3 {
+    font-size: 20px;
+    margin: 12px 16px;
+}
+
+.property-details p {
+    font-size: 16px;
+    line-height: 1.5;
+    margin: 10px 16px;
+}
+
+.property-details button {
+    width: calc(100% - 32px);
+    margin: 20px 16px;
+    background-color: #222;
+    color: white;
+}
+
+.property-info {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    padding: 10px 16px;
+}
+
+.property-info div {
+    background-color: #f5f5f5;
+    padding: 14px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.property-info span {
+    display: block;
+    font-size: 22px;
+    margin-bottom: 5px;
+}
+
+.property-info strong {
+    display: block;
+    font-size: 16px;
+}
+
+.property-info small {
+    display: block;
+    margin-top: 3px;
+    font-size: 13px;
+}
+.owner-section {
+    margin-top: 20px;
+    padding: 16px;
+    border-top: 1px solid #ddd;
+}
+
+.owner-section h3 {
+    margin: 0 0 12px;
+}
+
+.owner-section p {
+    margin: 8px 0;
+}
+
+.owner-section button {
+    margin: 15px 0 0;
+    width: 100%;
+    background-color: #222;
+    color: white;
+}
+form {
+    margin-top: 20px;
+    text-align: left;
+}
+
+form label {
+    display: block;
+    font-size: 15px;
+    font-weight: bold;
+    margin-bottom: 6px;
+}
+
+form input,
+form select,
+form textarea {
+    width: 100%;
+    padding: 13px;
+    margin-bottom: 18px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+    font-family: Arial, sans-serif;
+    outline: none;
+}
+
+form input:focus,
+form select:focus,
+form textarea:focus {
+    border-color: #555;
+}
+
+form textarea {
+    resize: vertical;
+}
+
+form button {
+    width: 100%;
+    background-color: #222;
+    color: white;
+}
+form input[type="file"] {
+    background-color: #f5f5f5;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 14px;
+}
+
+#photo-preview {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+#photo-preview img {
+    width: 100%;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+#photo-preview {
+    margin-bottom: 20px;
+}
+#photo-input {
+    display: none;
+}
+.upload-button {
+    display: block;
+    width: 100%;
+    padding: 13px;
+    background-color: transparent;
+    color: #222;
+    border: 1px solid #222;
+    text-align: center;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-bottom: 12px;
+}
+
+/* ==========================================
+   FILTER BOX
+   ========================================== */
+
+.filter-box {
+    background-color: #ffffff;
+    padding: 18px;
+    border-radius: 12px;
+    margin-top: 20px;
+    margin-bottom: 25px;
+    text-align: left;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+.filter-box h3 {
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.filter-box label {
+    display: block;
+    margin-top: 12px;
+    margin-bottom: 6px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.filter-box input,
+.filter-box select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 15px;
+    background-color: #ffffff;
+}
+
+.filter-box input:focus,
+.filter-box select:focus {
+    outline: none;
+    border-color: #555;
+}
+
+.filter-box .search-button {
+    border: none;
+    margin-top: 18px;
+    cursor: pointer;
+}
+
+.clear-button {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #ffffff;
+    font-size: 15px;
+    cursor: pointer;
+    margin-top: 2px;
+}
+/* ==========================================
+   NEW HOME PAGE
+========================================== */
+
+.home-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px;
+    background-color: #ffffff;
+    border-bottom: 1px solid #ddd;
+}
+
+.home-header h1 {
+    font-size: 18px;
+    white-space: nowrap;
+}
+
+.home-search {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    border: 1px solid #777;
+    border-radius: 20px;
+    padding: 7px 10px;
+}
+
+.home-search span {
+    font-size: 15px;
+}
+
+.home-search input {
+    width: 100%;
+    border: none;
+    outline: none;
+    font-size: 14px;
+    background: transparent;
+}
+
+.profile-button {
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    margin: 0;
+    border: 1px solid #777;
+    border-radius: 50%;
+    background-color: #ffffff;
+    font-size: 18px;
+}
+
+#home-property-list {
+    margin-top: 20px;
+}
+
+#home-property-list .property-card {
+    margin-bottom: 15px;
+}
+.home-search button {
+    width: auto;
+    padding: 6px 10px;
+    margin: 0;
+    font-size: 12px;
+    border-radius: 15px;
+}
+.hero-section {
+    width: 96%;
+    margin: 12px auto;
+    position: relative;
+    overflow: hidden;
+    border-radius: 3px;
+}
+
+.hero-image {
+    width: 100%;
+    height: 230px;
+    object-fit: cover;
+    display: block;
+}
+
+.hero-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 15px;
+    text-align: center;
+}
+
+.hero-content h2 {
+    font-size: 20px;
+    margin: 0 0 6px;
+}
+
+.hero-content p {
+    font-size: 13px;
+    margin: 0 0 10px;
+}
+/* ==========================================
+   PROPERTY CARDS
+========================================== */
+
+#home-property-list,
+#property-list,
+#nearby-property-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin-top: 15px;
+}
+
+
+.property-card {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+
+    background: white;
+
+    border: 1px solid #d8d8d8;
+    border-radius: 6px;
+
+    box-shadow:
+        0 2px 6px rgba(0, 0, 0, 0.12);
+
+    cursor: pointer;
+}
+
+
+/* Property image */
+
+.property-card img {
+    width: 100%;
+    height: 115px;
+
+    display: block;
+
+    object-fit: cover;
+}
+
+
+/* Bottom section */
+
+.property-card-bottom {
+    min-height: 42px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 5px;
+
+    padding: 6px 7px;
+}
+
+
+/* Rent */
+
+.property-rent {
+    font-size: 13px;
+    font-weight: bold;
+
+    line-height: 1.2;
+}
+
+
+/* View Details button */
+
+.view-details-button {
+    width: auto;
+
+    padding: 5px 7px;
+
+    margin: 0;
+
+    border: 1px solid #222;
+    border-radius: 4px;
+
+    background: white;
+
+    font-size: 10px;
+    font-weight: 500;
+
+    cursor: pointer;
+}
+
+
+/* Prevent cards from becoming too large */
+
+@media (min-width: 600px) {
+
+    #home-property-list,
+    #property-list,
+    #nearby-property-list {
+        grid-template-columns:
+            repeat(2, minmax(0, 220px));
+
+        justify-content: center;
+    }
+
+}
+/* ==========================================
+   FINAL PROPERTY CARD DESIGN
+========================================== */
+
+#home-property-list,
+#property-list,
+#nearby-property-list {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 10px !important;
+    width: 100% !important;
+}
+
+
+.property-card {
+    display: block !important;
+
+    width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+
+    padding: 0 !important;
+    margin: 0 !important;
+
+    overflow: hidden !important;
+
+    background: #ffffff;
+
+    border: 1px solid #d5d5d5;
+    border-radius: 6px;
+
+    box-shadow:
+        0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+
+/* Property image */
+
+.property-card > img {
+    display: block !important;
+
+    width: 100% !important;
+    height: 115px !important;
+
+    object-fit: cover !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+
+/* Bottom part */
+
+.property-card .property-card-bottom {
+    display: flex !important;
+
+    width: 100% !important;
+    min-height: 42px !important;
+
+    box-sizing: border-box !important;
+
+    align-items: center !important;
+    justify-content: space-between !important;
+
+    padding: 6px 7px !important;
+
+    background: #ffffff !important;
+}
+
+
+/* Rent */
+
+.property-card .property-rent {
+    display: block !important;
+
+    width: auto !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    font-size: 12px !important;
+    font-weight: 600 !important;
+
+    line-height: 1.2 !important;
+}
+
+
+/* View Details */
+
+.property-card .view-details-button {
+    display: block !important;
+
+    width: auto !important;
+
+    margin: 0 !important;
+
+    padding: 5px 7px !important;
+
+    border: 1px solid #222 !important;
+    border-radius: 4px !important;
+
+    background: #ffffff !important;
+
+    font-size: 9px !important;
+    font-weight: 500 !important;
+
+    line-height: 1.2 !important;
+}
+/* ==========================================
+   MAP IMAGE DESIGN
+========================================== */
+
+.hero-section {
+    width: 96%;
+    margin: 12px auto;
+
+    overflow: hidden;
+
+    border: 1px solid #d5d5d5;
+    border-radius: 6px;
+
+    background: #ffffff;
+
+    box-shadow:
+        0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+
+.hero-image {
+    display: block;
+
+    width: 100%;
+    height: 230px;
+
+    object-fit: cover;
+
+    margin: 0;
+    padding: 0;
+}
+/* ==========================================
+   TEXT ON MAP COVER
+========================================== */
+
+.hero-section {
+    position: relative;
+}
+
+.map-cover-title {
+    position: absolute;
+
+    top: 12px;
+    left: 0;
+    right: 0;
+
+    z-index: 2;
+
+    margin: 0;
+
+    text-align: center;
+
+    font-size: 22px;
+    font-weight: 600;
+
+    color: #222;
+}
+/* ==========================================
+   FILTER SECTION
+========================================== */
+
+.home-filter-section {
+    width: 96%;
+    margin: 12px auto;
+}
+
+
+/* ==========================================
+   SMALL FILTER BUTTON
+========================================== */
+
+.filters-toggle {
+    display: flex;
+
+    width: 100%;
+    min-height: 42px;
+
+    align-items: center;
+    justify-content: space-between;
+
+    box-sizing: border-box;
+
+    padding: 8px 11px;
+
+    border: 1px solid #d5d5d5;
+    border-radius: 6px;
+
+    background: #ffffff;
+
+    color: #222222;
+
+    font-size: 13px;
+    font-weight: 600;
+
+    box-shadow:
+        0 2px 6px rgba(0, 0, 0, 0.12);
+}
+
+
+/* ==========================================
+   FILTER PANEL
+========================================== */
+
+.filters-panel {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap: 10px;
+
+    width: 100%;
+
+    box-sizing: border-box;
+
+    margin-top: 6px;
+
+    padding: 10px;
+
+    border: 1px solid #d5d5d5;
+    border-radius: 6px;
+
+    background: #ffffff;
+
+    box-shadow:
+        0 2px 6px rgba(0, 0, 0, 0.12);
+}
+
+
+/* ==========================================
+   FILTER ITEM
+========================================== */
+
+.filter-item {
+    position: relative;
+
+    width: 100%;
+
+    min-width: 0;
+}
+
+
+.filter-item label {
+    display: block;
+
+    margin-bottom: 4px;
+
+    font-size: 10px;
+    font-weight: 600;
+
+    color: #333333;
+}
+
+
+/* ==========================================
+   COMPACT SELECTOR
+========================================== */
+
+.filter-selector {
+    display: flex;
+
+    width: 100%;
+    min-height: 38px;
+
+    align-items: center;
+    justify-content: space-between;
+
+    box-sizing: border-box;
+
+    padding: 7px 7px 7px 9px;
+
+    border: 1px solid #bdbdbd;
+    border-radius: 5px;
+
+    background: #ffffff;
+
+    color: #222222;
+
+    font-size: 11px;
+
+    text-align: left;
+}
+
+
+.selector-arrow {
+    display: flex;
+
+    width: 18px;
+    min-width: 18px;
+    height: 24px;
+
+    align-items: center;
+    justify-content: center;
+
+    margin-left: 5px;
+
+    border-left: 1px solid #d5d5d5;
+
+    font-size: 12px;
+}
+
+
+/* ==========================================
+   SMALL SCROLLABLE OPTIONS
+========================================== */
+
+.filter-options {
+    display: none;
+
+    position: absolute;
+
+    top: 100%;
+    left: 0;
+    right: 0;
+
+    z-index: 50;
+
+    max-height: 115px;
+
+    margin-top: 3px;
+
+    overflow-y: auto;
+
+    border: 1px solid #bdbdbd;
+    border-radius: 5px;
+
+    background: #ffffff;
+
+    box-shadow:
+        0 3px 8px rgba(0, 0, 0, 0.18);
+}
+
+
+.filter-options.open {
+    display: block;
+}
+
+
+/* Individual options */
+
+.filter-options button {
+    display: block;
+
+    width: 100%;
+
+    min-height: 32px;
+
+    box-sizing: border-box;
+
+    padding: 6px 8px;
+
+    border: 0;
+
+    border-bottom: 1px solid #eeeeee;
+
+    background: #ffffff;
+
+    color: #222222;
+
+    font-size: 11px;
+
+    text-align: left;
+}
+
+
+.filter-options button:last-child {
+    border-bottom: 0;
+}
+
+
+/* Selected option */
+
+.filter-options button.selected {
+    background: #eeeeee;
+
+    font-weight: 600;
+}
+
+
+/* ==========================================
+   FILTER ACTION BUTTONS
+========================================== */
+
+.filter-actions {
+    grid-column: 1 / -1;
+
+    display: flex;
+
+    gap: 8px;
+
+    width: 100%;
+
+    margin-top: 2px;
+}
+
+
+.filter-actions button {
+    flex: 1;
+
+    min-height: 38px;
+
+    border-radius: 5px;
+
+    font-size: 11px;
+    font-weight: 600;
+}
+
+
+#apply-filters {
+    border: 1px solid #222222;
+
+    background: #222222;
+
+    color: #ffffff;
+}
+
+
+#clear-filters {
+    border: 1px solid #222222;
+
+    background: #ffffff;
+
+    color: #222222;
+}

@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Nearby Properties - To-Let Finder
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
+    <!-- Leaflet CSS -->
+    <link
+        rel="stylesheet"
+        href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    >
+
+    <style>
+
+        #property-map {
+            width: 100%;
+            height: 500px;
+        }
+
+        .nearby-properties {
+            width: 96%;
+            margin: 20px auto;
+        }
+
+        .nearby-properties h2 {
+            margin-bottom: 12px;
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<header>
+
+    <h1>
+        🏠 To-Let Finder
+    </h1>
+
+</header>
+
+
+<main>
+
+    <h2>
+        Nearby Rental Houses
+    </h2>
+
+    <p id="map-status">
+        📍 Finding houses near you...
+    </p>
+
+    <div id="property-map"></div>
+
+
+    <!-- Nearby property cards -->
+
+    <section class="nearby-properties">
+
+        <h2>
+            Available Nearby Houses
+        </h2>
+
+        <div id="nearby-property-list">
+
+            <p>
+                Finding nearby houses...
+            </p>
+
+        </div>
+
+    </section>
+
+
+</main>
+
+
+<!-- Supabase -->
+
+<script
+    src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"
+></script>
+
+
+<!-- Your existing script -->
+
+<script src="script.js"></script>
+
+
+<!-- Leaflet -->
+
+<script
+    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+></script>
+
+
+<script>
+
+
+let propertyMap;
+
+
+/* ==========================================
+   DISTANCE CALCULATION
+========================================== */
+
+function calculateDistance(
+    lat1,
+    lon1,
+    lat2,
+    lon2
+) {
+
+    const earthRadius = 6371;
+
+    const dLat =
+        (lat2 - lat1) *
+        Math.PI / 180;
+
+    const dLon =
+        (lon2 - lon1) *
+        Math.PI / 180;
+
+
+    const a =
+        Math.sin(dLat / 2) *
+        Math.sin(dLat / 2) +
+
+        Math.cos(
+            lat1 * Math.PI / 180
+        ) *
+
+        Math.cos(
+            lat2 * Math.PI / 180
+        ) *
+
+        Math.sin(dLon / 2) *
+        Math.sin(dLon / 2);
+
+
+    const c =
+        2 *
+        Math.atan2(
+            Math.sqrt(a),
+            Math.sqrt(1 - a)
+        );
+
+
+    return earthRadius * c;
+
+}
+
+
+/* ==========================================
+   CREATE MAP
+========================================== */
+
+function createMap(
+    latitude,
+    longitude
+) {
+
+    propertyMap =
+        L.map(
+            "property-map"
+        ).setView(
+            [
+                latitude,
+                longitude
+            ],
+            13
+        );
+
+
+    L.tileLayer(
+        "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+        {
+            attribution:
+                "&copy; OpenStreetMap contributors"
+        }
+    ).addTo(
+        propertyMap
+    );
+
+
+    /* User location */
+
+    L.marker(
+        [
+            latitude,
+            longitude
+        ]
+    )
+    .addTo(
+        propertyMap
+    )
+    .bindPopup(
+        "📍 You are here"
+    );
+
+
+    loadNearbyProperties(
+        latitude,
+        longitude
+    );
+
+}
+
+
+/* ==========================================
+   LOAD NEARBY PROPERTIES
+========================================== */
+
+async function loadNearbyProperties(
+    userLatitude,
+    userLongitude
+) {
+
+    const nearbyPropertyList =
+        document.getElementById(
+            "nearby-property-list"
+        );
+
+
+    try {
+
+        const {
+            data,
+            error
+        } =
+            await supabaseClient
+            .from("properties")
+            .select("*")
+            .eq(
+                "status",
+                "available"
+            );
+
+
+        if (error) {
+
+            throw error;
+
+        }
+
+
+        if (
+            !data ||
+            data.length === 0
+        ) {
+
+            document.getElementById(
+                "map-status"
+            ).textContent =
+                "No rental houses available.";
+
+
+            nearbyPropertyList.innerHTML =
+                "<p>No houses available.</p>";
+
+            return;
+
+        }
+
+
+        let nearbyCount = 0;
+
+
+        /* Clear loading message */
+
+        nearbyPropertyList.innerHTML = "";
+
+
+        data.forEach(
+            function(property) {
+
+
+                /* Skip properties
+                   without coordinates */
+
+                if (
+                    property.latitude === null ||
+                    property.longitude === null
+                ) {
+
+                    return;
+
+                }
+
+
+                /* Calculate distance */
+
+                const distance =
+                    calculateDistance(
+                        userLatitude,
+                        userLongitude,
+                        property.latitude,
+                        property.longitude
+                    );
+
+
+                /* Only show properties
+                   within 20 km */
+
+                if (distance > 20) {
+
+                    return;
+
+                }
+
+
+                nearbyCount++;
+
+
+                /* ==================================
+                   CREATE MAP MARKER
+                ================================== */
+
+                const marker =
+                    L.marker(
+                        [
+                            property.latitude,
+                            property.longitude
+                        ]
+                    )
+                    .addTo(
+                        propertyMap
+                    );
+
+
+                marker.bindPopup(`
+
+                    <div>
+
+                        <strong>
+                            🏠 ${property.property_type}
+                        </strong>
+
+                        <br><br>
+
+                        💰 ₹${property.monthly_rent}
+                        / month
+
+                        <br>
+
+                        📍 ${property.location}
+
+                        <br>
+
+                        🛏️ ${property.bedrooms}
+                        Bedrooms
+
+                        <br>
+
+                        📏 ${distance.toFixed(1)}
+                        km away
+
+                        <br><br>
+
+                        <button
+                            type="button"
+                            onclick="openProperty(${property.id})"
+                        >
+                            View Property
+                        </button>
+
+                    </div>
+
+                `);
+
+
+                /* ==================================
+                   CREATE PROPERTY CARD
+                ================================== */
+
+                const card =
+                    document.createElement(
+                        "div"
+                    );
+
+
+                card.className =
+                    "property-card";
+
+
+                card.innerHTML = `
+
+                    <img
+                        src="${
+                            property.photo_url ||
+                            "images/house1.jpg"
+                        }"
+                        alt="Rental House"
+                    >
+
+                    <div
+                        class="property-card-bottom"
+                    >
+
+                        <div
+                            class="property-rent"
+                        >
+                            ₹${property.monthly_rent}/month
+                        </div>
+
+                        <button
+                            type="button"
+                            class="view-details-button"
+                        >
+                            View Details
+                        </button>
+
+                    </div>
+
+                `;
+
+
+                /* Whole card opens
+                   property details */
+
+                card.addEventListener(
+                    "click",
+                    function() {
+
+                        openProperty(
+                            property.id
+                        );
+
+                    }
+                );
+
+
+                /* View Details button */
+
+                const viewButton =
+                    card.querySelector(
+                        ".view-details-button"
+                    );
+
+
+                if (viewButton) {
+
+                    viewButton.addEventListener(
+                        "click",
+                        function(event) {
+
+                            event.stopPropagation();
+
+                            openProperty(
+                                property.id
+                            );
+
+                        }
+                    );
+
+                }
+
+
+                nearbyPropertyList.appendChild(
+                    card
+                );
+
+            }
+        );
+
+
+        /* ==================================
+           UPDATE STATUS
+        ================================== */
+
+        if (nearbyCount === 0) {
+
+            document.getElementById(
+                "map-status"
+            ).textContent =
+                "No rental houses found within 20 km.";
+
+
+            nearbyPropertyList.innerHTML =
+                "<p>No houses found within 20 km.</p>";
+
+        }
+
+        else {
+
+            document.getElementById(
+                "map-status"
+            ).textContent =
+                nearbyCount +
+                " rental house(s) found near you.";
+
+        }
+
+    }
+
+
+    catch (error) {
+
+        console.error(
+            "Property loading error:",
+            error
+        );
+
+
+        document.getElementById(
+            "map-status"
+        ).textContent =
+            "❌ Unable to load nearby houses.";
+
+
+        nearbyPropertyList.innerHTML =
+            "<p>Unable to load nearby houses.</p>";
+
+    }
+
+}
+
+
+/* ==========================================
+   OPEN PROPERTY
+========================================== */
+
+function openProperty(
+    propertyId
+) {
+
+    window.location.href =
+        "property.html?id=" +
+        propertyId;
+
+}
+
+
+/* ==========================================
+   GET USER LOCATION
+========================================== */
+
+if (
+    "geolocation" in navigator
+) {
+
+    navigator.geolocation.getCurrentPosition(
+
+        function(position) {
+
+            const latitude =
+                position.coords.latitude;
+
+            const longitude =
+                position.coords.longitude;
+
+
+            document.getElementById(
+                "map-status"
+            ).textContent =
+                "📍 Location found. Finding nearby houses...";
+
+
+            createMap(
+                latitude,
+                longitude
+            );
+
+        },
+
+
+        function(error) {
+
+            document.getElementById(
+                "map-status"
+            ).textContent =
+                "❌ Location permission is required.";
+
+        }
+
+    );
+
+}
+
+
+else {
+
+    document.getElementById(
+        "map-status"
+    ).textContent =
+        "❌ Location is not supported.";
+
+}
+
+
+</script>
+
+
+</body>
+
+</html>
