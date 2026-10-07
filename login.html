@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Login - To-Let Finder
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
+    <style>
+
+        .login-page {
+            width: 92%;
+            max-width: 500px;
+            margin: 40px auto;
+        }
+
+        .login-card {
+            background: #ffffff;
+            border: 1px solid #d5d5d5;
+            border-radius: 8px;
+            padding: 25px 20px;
+            box-shadow:
+                0 2px 8px rgba(0, 0, 0, 0.12);
+        }
+
+        .login-card h2 {
+            text-align: center;
+            margin-bottom: 8px;
+        }
+
+        .login-subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        .login-card label {
+            display: block;
+            margin-top: 18px;
+            margin-bottom: 7px;
+            font-weight: 600;
+        }
+
+        .login-card input {
+            width: 100%;
+            box-sizing: border-box;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 16px;
+        }
+
+        .login-button,
+        .signup-button,
+        .skip-login-button {
+            width: 100%;
+            padding: 12px;
+            margin-top: 15px;
+            border-radius: 6px;
+            font-size: 15px;
+            cursor: pointer;
+        }
+
+        .login-button {
+            background: #222;
+            color: #ffffff;
+            border: 1px solid #222;
+        }
+
+        .signup-button {
+            background: #ffffff;
+            color: #222;
+            border: 1px solid #222;
+        }
+
+        .skip-login-button {
+            background: #ffffff;
+            color: #222;
+            border: 1px solid #999;
+        }
+
+        .login-message {
+            margin-top: 18px;
+            text-align: center;
+            line-height: 1.5;
+        }
+
+        .back-home {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            color: #222;
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<header>
+
+    <h1>
+        🏠 To-Let Finder
+    </h1>
+
+</header>
+
+
+<main>
+    <a href="index.html" class="skip-login">
+    Skip Login
+</a>
+
+    <section class="login-page">
+
+        <div class="login-card">
+
+            <h2>
+                Welcome!
+            </h2>
+
+            <p class="login-subtitle">
+                Log in or create your To-Let Finder account.
+            </p>
+
+
+            <label for="email">
+                Email address
+            </label>
+
+            <input
+                type="email"
+                id="email"
+                placeholder="Enter your email"
+                autocomplete="email"
+            >
+
+
+            <label for="password">
+                Password
+            </label>
+
+            <input
+                type="password"
+                id="password"
+                placeholder="Enter your password"
+                autocomplete="current-password"
+            >
+
+
+            <button
+                type="button"
+                class="login-button"
+                id="login-button"
+            >
+                Log In
+            </button>
+
+
+            <button
+                type="button"
+                class="signup-button"
+                id="signup-button"
+            >
+                Sign Up
+            </button>
+
+
+            <button
+                type="button"
+                class="skip-login-button"
+                id="skip-login-button"
+            >
+                Skip Login
+            </button>
+
+
+            <div
+                class="login-message"
+                id="login-message"
+            ></div>
+
+
+            <a
+                href="index.html"
+                class="back-home"
+            >
+                ← Back to Home
+            </a>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<!-- Supabase -->
+
+<script
+    src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"
+></script>
+
+
+<script src="script.js"></script>
+
+
+<script>
+
+const emailInput =
+    document.getElementById(
+        "email"
+    );
+
+
+const passwordInput =
+    document.getElementById(
+        "password"
+    );
+
+
+const loginButton =
+    document.getElementById(
+        "login-button"
+    );
+
+
+const signupButton =
+    document.getElementById(
+        "signup-button"
+    );
+
+
+const skipLoginButton =
+    document.getElementById(
+        "skip-login-button"
+    );
+
+
+const message =
+    document.getElementById(
+        "login-message"
+    );
+
+
+/* ==========================================
+   CHECK EXISTING LOGIN
+========================================== */
+
+async function checkExistingLogin() {
+
+    const {
+        data
+    } =
+        await supabaseClient.auth.getSession();
+
+
+    if (
+        data &&
+        data.session
+    ) {
+
+        window.location.replace(
+            "index.html"
+        );
+
+    }
+
+}
+
+
+checkExistingLogin();
+
+
+/* ==========================================
+   LOGIN
+========================================== */
+
+loginButton.addEventListener(
+    "click",
+    async function() {
+
+        const email =
+            emailInput.value.trim();
+
+        const password =
+            passwordInput.value;
+
+
+        if (
+            !email ||
+            !password
+        ) {
+
+            message.textContent =
+                "Please enter your email and password.";
+
+            return;
+
+        }
+
+
+        loginButton.disabled = true;
+
+        loginButton.textContent =
+            "Logging in...";
+
+
+        const {
+            error
+        } =
+            await supabaseClient.auth.signInWithPassword({
+
+                email:
+                    email,
+
+                password:
+                    password
+
+            });
+
+
+        if (error) {
+
+            message.textContent =
+                error.message;
+
+            loginButton.disabled = false;
+
+            loginButton.textContent =
+                "Log In";
+
+            return;
+
+        }
+
+
+        /*
+         * Remove the temporary
+         * skip-login choice.
+         */
+
+        sessionStorage.removeItem(
+            "toletfinder_skip_login"
+        );
+
+
+        window.location.replace(
+            "index.html"
+        );
+
+    }
+);
+
+
+/* ==========================================
+   SIGN UP
+========================================== */
+
+signupButton.addEventListener(
+    "click",
+    async function() {
+
+        const email =
+            emailInput.value.trim();
+
+        const password =
+            passwordInput.value;
+
+
+        if (
+            !email ||
+            !password
+        ) {
+
+            message.textContent =
+                "Please enter your email and password.";
+
+            return;
+
+        }
+
+
+        signupButton.disabled = true;
+
+        signupButton.textContent =
+            "Creating account...";
+
+
+        const {
+            data,
+            error
+        } =
+            await supabaseClient.auth.signUp({
+
+                email:
+                    email,
+
+                password:
+                    password,
+
+                options: {
+
+                    emailRedirectTo:
+                        "https://abhinav1320.github.io/ToLetFinder/"
+
+                }
+
+            });
+
+
+        if (error) {
+
+            message.textContent =
+                error.message;
+
+            signupButton.disabled = false;
+
+            signupButton.textContent =
+                "Sign Up";
+
+            return;
+
+        }
+
+
+        /*
+         * If email confirmation is required,
+         * Supabase will send the confirmation email.
+         */
+
+        if (
+            data.user &&
+            !data.session
+        ) {
+
+            message.textContent =
+                "Account created! Please check your email and confirm your account before logging in.";
+
+        }
+
+        else {
+
+            sessionStorage.removeItem(
+                "toletfinder_skip_login"
+            );
+
+            window.location.replace(
+                "index.html"
+            );
+
+        }
+
+
+        signupButton.disabled = false;
+
+        signupButton.textContent =
+            "Sign Up";
+
+    }
+);
+
+
+/* ==========================================
+   SKIP LOGIN
+========================================== */
+
+skipLoginButton.addEventListener(
+    "click",
+    function() {
+
+        /*
+         * Remember skip only for
+         * the current browser session.
+         */
+
+        sessionStorage.setItem(
+            "toletfinder_skip_login",
+            "true"
+        );
+
+
+        window.location.replace(
+            "index.html"
+        );
+
+    }
+);
+
+</script>
+
+
+</body>
+
+</html>

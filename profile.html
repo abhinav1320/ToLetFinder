@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Profile - To-Let Finder
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
+    <style>
+
+        .profile-page {
+            width: 92%;
+            max-width: 500px;
+            margin: 40px auto;
+        }
+
+        .profile-card {
+            background: #ffffff;
+            border: 1px solid #d5d5d5;
+            border-radius: 8px;
+            padding: 25px 20px;
+            box-shadow:
+                0 2px 8px rgba(0, 0, 0, 0.12);
+            text-align: center;
+        }
+
+        .profile-icon {
+            font-size: 55px;
+            margin-bottom: 10px;
+        }
+
+        .profile-card h2 {
+            margin: 5px 0 20px;
+        }
+
+        .profile-label {
+            color: #666;
+            font-size: 13px;
+        }
+
+        .profile-email {
+            font-size: 16px;
+            font-weight: 600;
+            margin: 8px 0 25px;
+            word-break: break-word;
+        }
+
+        .profile-button-action {
+            width: 100%;
+            padding: 12px;
+            border-radius: 6px;
+            font-size: 15px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .primary-profile-button {
+            background: #222;
+            color: #ffffff;
+            border: 1px solid #222;
+        }
+
+        .secondary-profile-button {
+            background: #ffffff;
+            color: #222;
+            border: 1px solid #222;
+        }
+
+        .profile-message {
+            margin: 15px 0;
+            line-height: 1.5;
+        }
+
+        .back-home {
+            display: block;
+            margin-top: 20px;
+            color: #222;
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<header>
+
+    <h1>
+        🏠 To-Let Finder
+    </h1>
+
+</header>
+
+
+<main>
+
+    <section class="profile-page">
+
+        <div class="profile-card">
+
+            <div class="profile-icon">
+                👤
+            </div>
+
+            <h2>
+                My Profile
+            </h2>
+
+
+            <div id="profile-content">
+
+                Loading...
+
+            </div>
+
+
+            <a
+                href="index.html"
+                class="back-home"
+            >
+                ← Back to Home
+            </a>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<script
+    src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"
+></script>
+
+
+<script src="script.js"></script>
+
+
+<script>
+
+const profileContent =
+    document.getElementById(
+        "profile-content"
+    );
+
+
+/* ==========================================
+   LOAD PROFILE
+========================================== */
+
+async function loadProfile() {
+
+    const {
+        data
+    } =
+        await supabaseClient.auth.getSession();
+
+
+    const session =
+        data
+            ? data.session
+            : null;
+
+
+    /* ==========================================
+       LOGGED IN
+    ========================================== */
+
+    if (session) {
+
+        profileContent.innerHTML = `
+
+            <div class="profile-label">
+                Email address
+            </div>
+
+            <div class="profile-email">
+                ${session.user.email}
+            </div>
+
+            <button
+                type="button"
+                class="profile-button-action primary-profile-button"
+                id="logout-button"
+            >
+                Log Out
+            </button>
+
+        `;
+
+
+        document
+            .getElementById("logout-button")
+            .addEventListener(
+                "click",
+                async function() {
+
+                    const logoutButton =
+                        document.getElementById(
+                            "logout-button"
+                        );
+
+
+                    logoutButton.disabled =
+                        true;
+
+                    logoutButton.textContent =
+                        "Logging out...";
+
+
+                    const {
+                        error
+                    } =
+                        await supabaseClient.auth.signOut();
+
+
+                    if (error) {
+
+                        logoutButton.disabled =
+                            false;
+
+                        logoutButton.textContent =
+                            "Log Out";
+
+                        alert(
+                            "Unable to log out. Please try again."
+                        );
+
+                        return;
+
+                    }
+
+
+                    window.location.replace(
+                        "login.html"
+                    );
+
+                }
+            );
+
+    }
+
+
+    /* ==========================================
+       NOT LOGGED IN
+    ========================================== */
+
+    else {
+
+        profileContent.innerHTML = `
+
+            <p class="profile-message">
+                You are not logged in.
+            </p>
+
+            <button
+                type="button"
+                class="profile-button-action primary-profile-button"
+                id="profile-login-button"
+            >
+                Log In / Sign Up
+            </button>
+
+        `;
+
+
+        document
+            .getElementById(
+                "profile-login-button"
+            )
+            .addEventListener(
+                "click",
+                function() {
+
+                    window.location.href =
+                        "login.html";
+
+                }
+            );
+
+    }
+
+}
+
+
+loadProfile();
+
+</script>
+
+
+</body>
+
+</html>
