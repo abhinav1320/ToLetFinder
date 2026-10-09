@@ -1,0 +1,945 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    color: #222;
+}
+
+header {
+    background-color: #ffffff;
+    padding: 18px;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 24px;
+}
+
+main {
+    padding: 25px 18px;
+    text-align: center;
+}
+
+main h2 {
+    font-size: 28px;
+    margin-bottom: 12px;
+}
+
+main p {
+    font-size: 16px;
+    line-height: 1.5;
+    margin-bottom: 25px;
+}
+
+button {
+    width: 100%;
+    padding: 14px;
+    margin-bottom: 12px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+
+/* ==========================================
+   EXPLORE MORE
+========================================== */
+
+#explore-more-button {
+    width: 80%;
+    padding: 8px 18px;
+    margin-bottom: 0;
+    font-size: 15px;
+    border-radius: 20px;
+}
+
+
+/* ==========================================
+   SEARCH
+========================================== */
+
+.search-box {
+    margin-bottom: 20px;
+}
+
+.search-box input {
+    width: 100%;
+    padding: 14px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+    margin-bottom: 12px;
+    outline: none;
+}
+
+.search-box input:focus {
+    border-color: #555;
+}
+
+
+/* ==========================================
+   HOME HEADER
+========================================== */
+
+.home-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px;
+    background-color: #ffffff;
+    border-bottom: 1px solid #ddd;
+}
+
+.home-header h1 {
+    font-size: 18px;
+    white-space: nowrap;
+}
+
+.home-search {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    border: 1px solid #777;
+    border-radius: 20px;
+    padding: 7px 10px;
+}
+
+.home-search span {
+    font-size: 15px;
+}
+
+.home-search input {
+    width: 100%;
+    border: none;
+    outline: none;
+    font-size: 14px;
+    background: transparent;
+}
+
+.home-search button {
+    width: auto;
+    padding: 6px 10px;
+    margin: 0;
+    font-size: 12px;
+    border-radius: 15px;
+}
+
+.profile-button {
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    margin: 0;
+    border: 1px solid #777;
+    border-radius: 50%;
+    background-color: #ffffff;
+    font-size: 18px;
+}
+
+
+/* ==========================================
+   HERO / MAP COVER
+========================================== */
+
+.hero-section {
+    width: 96%;
+    margin: 12px auto;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid #d5d5d5;
+    border-radius: 6px;
+    background: #ffffff;
+    box-shadow:
+        0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+.hero-image {
+    display: block;
+    width: 100%;
+    height: 230px;
+    object-fit: cover;
+    margin: 0;
+    padding: 0;
+}
+
+.hero-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 15px;
+    text-align: center;
+}
+
+.map-cover-title {
+    position: absolute;
+    top: 12px;
+    left: 0;
+    right: 0;
+    z-index: 2;
+    margin: 0;
+    text-align: center;
+    font-size: 22px;
+    font-weight: 600;
+    color: #222;
+}
+
+
+/* ==========================================
+   PROPERTY LIST
+========================================== */
+
+#home-property-list,
+#property-list,
+#nearby-property-list {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 10px !important;
+    width: 100% !important;
+    margin-top: 15px;
+}
+
+
+/* ==========================================
+   PROPERTY CARD
+========================================== */
+
+.property-card {
+    display: block !important;
+
+    width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+
+    padding: 0 !important;
+    margin: 0 !important;
+
+    overflow: hidden !important;
+
+    background: #ffffff;
+
+    border: 1px solid #d5d5d5;
+    border-radius: 6px;
+
+    box-shadow:
+        0 2px 6px rgba(0, 0, 0, 0.15);
+
+    cursor: pointer;
+}
+
+.property-card > img {
+    display: block !important;
+
+    width: 100% !important;
+    height: 115px !important;
+
+    object-fit: cover !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.property-card .property-card-bottom {
+    display: flex !important;
+
+    width: 100% !important;
+    min-height: 42px !important;
+
+    box-sizing: border-box !important;
+
+    align-items: center !important;
+    justify-content: space-between !important;
+
+    padding: 6px 7px !important;
+
+    background: #ffffff !important;
+}
+
+.property-card .property-rent {
+    display: block !important;
+
+    width: auto !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    font-size: 12px !important;
+    font-weight: 600 !important;
+
+    line-height: 1.2 !important;
+}
+
+.property-card .view-details-button {
+    display: block !important;
+
+    width: auto !important;
+
+    margin: 0 !important;
+
+    padding: 5px 7px !important;
+
+    border: 1px solid #222 !important;
+    border-radius: 4px !important;
+
+    background: #ffffff !important;
+
+    font-size: 9px !important;
+    font-weight: 500 !important;
+
+    line-height: 1.2 !important;
+}
+
+
+/* ==========================================
+   PROPERTY DETAILS
+========================================== */
+
+.property-details {
+    background-color: #ffffff;
+    border-radius: 12px;
+    overflow: hidden;
+    text-align: left;
+    box-shadow:
+        0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.property-details img {
+    width: 100%;
+    height: 240px;
+    object-fit: cover;
+    display: block;
+}
+
+.property-details h2 {
+    font-size: 26px;
+    margin: 18px 16px 8px;
+}
+
+.property-details h3 {
+    font-size: 20px;
+    margin: 12px 16px;
+}
+
+.property-details p {
+    font-size: 16px;
+    line-height: 1.5;
+    margin: 10px 16px;
+}
+
+.property-details button {
+    width: calc(100% - 32px);
+    margin: 20px 16px;
+    background-color: #222;
+    color: white;
+}
+
+.property-info {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    padding: 10px 16px;
+}
+
+.property-info div {
+    background-color: #f5f5f5;
+    padding: 14px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.property-info span {
+    display: block;
+    font-size: 22px;
+    margin-bottom: 5px;
+}
+
+.property-info strong {
+    display: block;
+    font-size: 16px;
+}
+
+.property-info small {
+    display: block;
+    margin-top: 3px;
+    font-size: 13px;
+}
+
+
+/* ==========================================
+   OWNER SECTION
+========================================== */
+
+.owner-section {
+    margin-top: 20px;
+    padding: 16px;
+    border-top: 1px solid #ddd;
+}
+
+.owner-section h3 {
+    margin: 0 0 12px;
+}
+
+.owner-section p {
+    margin: 8px 0;
+}
+
+.owner-section button {
+    margin: 15px 0 0;
+    width: 100%;
+    background-color: #222;
+    color: white;
+}
+
+
+/* ==========================================
+   FORMS
+========================================== */
+
+form {
+    margin-top: 20px;
+    text-align: left;
+}
+
+form label {
+    display: block;
+    font-size: 15px;
+    font-weight: bold;
+    margin-bottom: 6px;
+}
+
+form input,
+form select,
+form textarea {
+    width: 100%;
+    padding: 13px;
+    margin-bottom: 18px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+    font-family: Arial, sans-serif;
+    outline: none;
+}
+
+form input:focus,
+form select:focus,
+form textarea:focus {
+    border-color: #555;
+}
+
+form textarea {
+    resize: vertical;
+}
+
+form button {
+    width: 100%;
+    background-color: #222;
+    color: white;
+}
+
+
+/* ==========================================
+   PHOTO UPLOAD
+========================================== */
+
+form input[type="file"] {
+    background-color: #f5f5f5;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 14px;
+}
+
+#photo-input {
+    display: none;
+}
+
+.upload-button {
+    display: block;
+    width: 100%;
+    padding: 13px;
+    background-color: transparent;
+    color: #222;
+    border: 1px solid #222;
+    text-align: center;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-bottom: 12px;
+}
+
+#photo-preview {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+#photo-preview img {
+    width: 100%;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+
+/* =========================================================
+   FILTER SECTION — RESTORED COMPACT DESIGN
+========================================================= */
+
+.home-filter-section {
+    width: 96%;
+    margin: 12px auto;
+    text-align: left;
+}
+
+
+/* Main Filters button */
+
+.filters-toggle {
+    display: flex !important;
+
+    width: 100% !important;
+    min-height: 42px !important;
+
+    align-items: center !important;
+    justify-content: center !important;
+
+    box-sizing: border-box !important;
+
+    padding: 8px 11px !important;
+
+    margin: 0 !important;
+
+    border: 1px solid #d5d5d5 !important;
+    border-radius: 6px !important;
+
+    background: #ffffff !important;
+
+    color: #222222 !important;
+
+    font-size: 13px !important;
+    font-weight: 600 !important;
+
+    box-shadow:
+        0 2px 6px rgba(0, 0, 0, 0.12) !important;
+}
+
+
+/* Arrow */
+
+#filters-arrow {
+    margin-left: 5px;
+}
+
+
+/* Filter panel */
+
+.filters-panel {
+    display: grid !important;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr)) !important;
+
+    gap: 8px !important;
+
+    width: 100% !important;
+
+    box-sizing: border-box !important;
+
+    margin-top: 6px !important;
+
+    padding: 8px !important;
+
+    border: 1px solid #d5d5d5 !important;
+    border-radius: 6px !important;
+
+    background: #ffffff !important;
+
+    box-shadow:
+        0 2px 6px rgba(0, 0, 0, 0.12) !important;
+}
+
+
+/* Individual filter */
+
+.filter-item {
+    position: relative !important;
+
+    width: 100% !important;
+    min-width: 0 !important;
+
+    margin: 0 !important;
+}
+
+
+/* Filter label */
+
+.filter-item label {
+    display: block !important;
+
+    margin: 0 0 3px 2px !important;
+
+    font-size: 10px !important;
+    font-weight: 600 !important;
+
+    color: #333333 !important;
+}
+
+
+/* Selector */
+
+.filter-selector {
+    display: flex !important;
+
+    width: 100% !important;
+    min-height: 36px !important;
+
+    align-items: center !important;
+    justify-content: space-between !important;
+
+    box-sizing: border-box !important;
+
+    padding: 6px 7px 6px 8px !important;
+
+    margin: 0 !important;
+
+    border: 1px solid #bdbdbd !important;
+    border-radius: 5px !important;
+
+    background: #ffffff !important;
+
+    color: #222222 !important;
+
+    font-size: 11px !important;
+
+    text-align: left !important;
+}
+
+
+/* Selector arrow */
+
+.selector-arrow {
+    display: flex !important;
+
+    width: 17px !important;
+    min-width: 17px !important;
+    height: 22px !important;
+
+    align-items: center !important;
+    justify-content: center !important;
+
+    margin-left: 5px !important;
+
+    border-left: 1px solid #d5d5d5 !important;
+
+    font-size: 11px !important;
+}
+
+
+/* Dropdown options */
+
+.filter-options {
+    display: none !important;
+
+    position: absolute !important;
+
+    top: calc(100% + 3px) !important;
+    left: 0 !important;
+    right: 0 !important;
+
+    z-index: 100 !important;
+
+    max-height: 120px !important;
+
+    overflow-y: auto !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    border: 1px solid #bdbdbd !important;
+    border-radius: 5px !important;
+
+    background: #ffffff !important;
+
+    box-shadow:
+        0 3px 8px rgba(0, 0, 0, 0.18) !important;
+}
+
+
+/* Only opened dropdown */
+
+.filter-options.open {
+    display: block !important;
+}
+
+
+/* Dropdown buttons */
+
+.filter-options button {
+    display: block !important;
+
+    width: 100% !important;
+    min-height: 30px !important;
+
+    box-sizing: border-box !important;
+
+    padding: 6px 8px !important;
+
+    margin: 0 !important;
+
+    border: 0 !important;
+    border-bottom: 1px solid #eeeeee !important;
+    border-radius: 0 !important;
+
+    background: #ffffff !important;
+
+    color: #222222 !important;
+
+    font-size: 11px !important;
+
+    text-align: left !important;
+}
+
+.filter-options button:last-child {
+    border-bottom: 0 !important;
+}
+
+
+/* Selected option */
+
+.filter-options button.selected {
+    background: #eeeeee !important;
+    font-weight: 600 !important;
+}
+
+
+/* Filter action buttons */
+
+.filter-actions {
+    grid-column: 1 / -1 !important;
+
+    display: flex !important;
+
+    gap: 8px !important;
+
+    width: 100% !important;
+
+    margin: 2px 0 0 !important;
+    padding: 0 !important;
+}
+
+.filter-actions button {
+    flex: 1 !important;
+
+    min-height: 36px !important;
+
+    padding: 7px !important;
+    margin: 0 !important;
+
+    border-radius: 5px !important;
+
+    font-size: 11px !important;
+    font-weight: 600 !important;
+}
+
+#apply-filters {
+    border: 1px solid #222222 !important;
+    background: #222222 !important;
+    color: #ffffff !important;
+}
+
+#clear-filters {
+    border: 1px solid #222222 !important;
+    background: #ffffff !important;
+    color: #222222 !important;
+}
+
+
+/* ==========================================
+   SKIP LOGIN
+========================================== */
+
+.skip-login {
+    display: block;
+    width: fit-content;
+    margin: 20px 25px 10px auto;
+
+    color: #333;
+    font-size: 16px;
+    font-weight: 500;
+
+    text-decoration: underline;
+}
+
+.skip-login:active {
+    color: #000;
+}
+
+
+/* ==========================================
+   LARGER SCREENS
+========================================== */
+
+@media (min-width: 600px) {
+
+    #home-property-list,
+    #property-list,
+    #nearby-property-list {
+        grid-template-columns:
+            repeat(2, minmax(0, 220px));
+        justify-content: center;
+    }
+
+}
+
+/* FIX: Keep filter panel hidden until opened */
+.filters-panel[hidden] {
+    display: none !important;
+}
+
+/* FIX: Filters on the left, arrow on the right */
+.filters-toggle {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    width: 100% !important;
+    text-align: left !important;
+    box-sizing: border-box !important;
+}
+
+/* Keep the arrow at the right edge */
+#filters-arrow {
+    margin-left: auto !important;
+    text-align: right !important;
+    flex-shrink: 0;
+}
+
+/* FIX: Compact two-column filter panel */
+.filters-panel:not([hidden]) {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+}
+/* Fix individual filter dropdown arrows */
+.filter-item {
+    position: relative;
+    min-width: 0;
+}
+
+.filter-selector {
+    position: relative;
+    z-index: 2;
+    cursor: pointer;
+    touch-action: manipulation;
+}
+
+.filter-options {
+    position: absolute;
+    top: calc(100% + 3px);
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    display: none;
+    max-height: 150px;
+    overflow-y: auto;
+    background: #fff;
+}
+
+.filter-options.open {
+    display: block !important;
+}
+
+/* Property title and like button */
+.property-title-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    width: 100%;
+}
+
+.property-title-row #property-title {
+    flex: 1;
+    min-width: 0;
+    margin: 0;
+}
+
+.like-property-button {
+    flex-shrink: 0;
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    margin: 0;
+    border: none;
+    outline: none;
+    background: transparent;
+    color: #111;
+    font-size: 28px;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.like-property-button.liked {
+    color: #e53935;
+    background: transparent;
+    border: none;
+}
+
+
+
+/* Final style for the like heart */
+button#like-property-button {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 36px !important;
+    min-width: 36px !important;
+    max-width: 36px !important;
+    height: 36px !important;
+    min-height: 36px !important;
+    padding: 0 !important;
+    margin: 10px 18px 0 0 !important;
+    border: 1px solid #777 !important;
+    border-radius: 50% !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    color: #111 !important;
+    font-size: 25px !important;
+    line-height: 1 !important;
+    align-self: center !important;
+}
+
+button#like-property-button.liked {
+    color: #e53935 !important;
+    border-color: #e53935 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

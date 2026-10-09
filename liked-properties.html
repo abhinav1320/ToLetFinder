@@ -1,0 +1,93 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liked Properties - To-Let Finder</title>
+
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+    <header>
+        <button type="button" onclick="history.back()" aria-label="Go back">←</button>
+        <h2>❤️ Liked Properties</h2>
+    </header>
+
+    <main style="padding: 15px;">
+        <p>Houses you've saved for later.</p>
+
+        <p id="liked-status">Loading your liked properties...</p>
+
+        <div id="liked-property-list"></div>
+    </main>
+
+    <script src="script.js"></script>
+
+    <script>
+        async function loadLikedPropertiesPage() {
+            const status = document.getElementById("liked-status");
+            const list = document.getElementById("liked-property-list");
+
+            const { data: userData, error: userError } =
+                await supabaseClient.auth.getUser();
+
+            if (userError || !userData.user) {
+                status.textContent = "Please log in to view your liked properties.";
+                return;
+            }
+
+            const { data: likes, error: likesError } = await supabaseClient
+                .from("liked_properties")
+                .select("property_id")
+                .eq("user_id", userData.user.id);
+
+            if (likesError) {
+                status.textContent = "Couldn't load liked properties. Please try again.";
+                console.error(likesError);
+                return;
+            }
+
+            const propertyIds = (likes || []).map(item => item.property_id);
+
+            if (propertyIds.length === 0) {
+                status.textContent = "You haven't liked any properties yet.";
+                return;
+            }
+
+            const { data: properties, error: propertiesError } =
+                await supabaseClient
+                    .from("properties")
+                    .select("*")
+                    .in("id", propertyIds)
+                    .eq("status", "available");
+
+            if (propertiesError) {
+                status.textContent = "Couldn't load the properties. Please try again.";
+                console.error(propertiesError);
+                return;
+            }
+
+            if (!properties || properties.length === 0) {
+                status.textContent = "Your liked properties are no longer available.";
+                return;
+            }
+
+            status.textContent = "";
+
+            if (typeof createPropertyCard !== "function") {
+                status.textContent = "Property cards couldn't be displayed.";
+                return;
+            }
+
+            properties.forEach(property => {
+                list.appendChild(createPropertyCard(property));
+            });
+        }
+
+        document.addEventListener("DOMContentLoaded", loadLikedPropertiesPage);
+    </script>
+</body>
+</html>
+

@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Profile - To-Let Finder
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
+   <style>
+
+/* ==========================================
+   PROFILE HEADER
+========================================== */
+
+.profile-header {
+    position: relative;
+
+    width: 100%;
+    height: 58px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #ffffff;
+
+    border-bottom: 1px solid #dddddd;
+}
+
+
+.profile-header-title {
+    margin: 0;
+
+    font-size: 21px;
+    font-weight: 600;
+
+    color: #111;
+
+    text-align: center;
+}
+
+
+.profile-back-button {
+    position: absolute;
+
+    left: 16px;
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    text-decoration: none;
+
+    color: #111;
+
+    font-size: 30px;
+    font-weight: 300;
+
+    line-height: 1;
+}
+
+
+
+/* ==========================================
+   MAIN PROFILE CONTAINER
+========================================== */
+
+.profile-page {
+    width: 92%;
+    max-width: 650px;
+
+    margin: 28px auto 45px;
+}
+
+
+.profile-container {
+    background: #ffffff;
+
+    border: 1px solid #d9dce1;
+
+    border-radius: 14px;
+
+    padding: 18px;
+
+    box-sizing: border-box;
+}
+
+
+
+/* ==========================================
+   ACCOUNT INFORMATION
+========================================== */
+
+.account-info-card {
+    width: 100%;
+
+    min-height: 105px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 20px;
+
+    padding: 16px 20px;
+
+    box-sizing: border-box;
+
+    background: #ffffff;
+
+    border: 1px solid #d9dce1;
+
+    border-radius: 12px;
+}
+
+
+.account-avatar {
+    width: 65px;
+    height: 65px;
+
+    flex-shrink: 0;
+
+    border-radius: 50%;
+
+    background: #eef0f3;
+
+    border: 1px solid #d9dce1;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 38px;
+}
+
+
+.account-email-label {
+    margin: 0 0 5px;
+
+    font-size: 14px;
+
+    color: #687384;
+}
+
+
+.account-email {
+    margin: 0;
+
+    font-size: 17px;
+    font-weight: 600;
+
+    color: #111;
+
+    word-break: break-word;
+}
+
+
+
+/* ==========================================
+   MY ACCOUNT
+========================================== */
+
+.my-account-title {
+    margin: 30px 0 16px;
+
+    font-size: 27px;
+    font-weight: 600;
+
+    color: #111;
+}
+
+
+
+/* ==========================================
+   ACCOUNT ACTION CARDS
+========================================== */
+
+.account-action-card {
+    width: 100%;
+
+    min-height: 82px;
+
+    display: flex;
+    align-items: center;
+
+    padding: 14px 16px;
+
+    margin-bottom: 12px;
+
+    box-sizing: border-box;
+
+    background: #ffffff;
+
+    border: 1px solid #d9dce1;
+
+    border-radius: 12px;
+
+    text-decoration: none;
+
+    color: #111;
+
+    cursor: pointer;
+}
+
+
+.account-action-icon {
+    width: 45px;
+
+    flex-shrink: 0;
+
+    font-size: 32px;
+
+    text-align: center;
+}
+
+
+.account-action-content {
+    flex: 1;
+
+    min-width: 0;
+
+    padding-left: 14px;
+}
+
+
+.account-action-title {
+    margin: 0 0 4px;
+
+    font-size: 17px;
+
+    font-weight: 600;
+
+    color: #111;
+}
+
+
+.account-action-description {
+    margin: 0;
+
+    font-size: 13px;
+
+    color: #7b8797;
+}
+
+
+.account-action-arrow {
+    font-size: 25px;
+
+    margin-left: 8px;
+
+    color: #111;
+}
+
+
+
+/* ==========================================
+   LOGOUT BUTTON
+========================================== */
+
+.logout-button {
+    width: 100%;
+
+    min-height: 68px;
+
+    display: flex;
+    align-items: center;
+
+    padding: 14px 20px;
+
+    margin-top: 22px;
+
+    box-sizing: border-box;
+
+    background: #222222;
+
+    color: #ffffff;
+
+    border: 1px solid #222222;
+
+    border-radius: 12px;
+
+    font-size: 19px;
+
+    cursor: pointer;
+}
+
+
+.logout-icon {
+    font-size: 30px;
+
+    margin-right: 18px;
+}
+
+
+.logout-text {
+    font-size: 19px;
+    font-weight: 500;
+}
+
+
+
+/* ==========================================
+   LOGGED OUT STATE
+========================================== */
+
+.not-logged-message {
+    padding: 20px;
+
+    text-align: center;
+
+    font-size: 17px;
+
+    color: #666;
+}
+
+
+
+/* ==========================================
+   DESKTOP
+========================================== */
+
+@media (min-width: 601px) {
+
+    .profile-page {
+        max-width: 700px;
+    }
+
+}
+
+
+/* ==========================================
+   SMALL PHONES
+========================================== */
+
+@media (max-width: 380px) {
+
+    .profile-page {
+        width: 94%;
+
+        margin-top: 22px;
+    }
+
+
+    .profile-container {
+        padding: 14px;
+    }
+
+
+    .account-info-card {
+        gap: 14px;
+
+        padding: 13px 15px;
+    }
+
+
+    .account-avatar {
+        width: 58px;
+        height: 58px;
+
+        font-size: 34px;
+    }
+
+
+    .account-email {
+        font-size: 15px;
+    }
+
+
+    .account-action-card {
+        min-height: 76px;
+
+        padding: 12px;
+    }
+
+
+    .account-action-icon {
+        width: 38px;
+
+        font-size: 28px;
+    }
+
+
+    .account-action-content {
+        padding-left: 10px;
+    }
+
+
+    .account-action-title {
+        font-size: 16px;
+    }
+
+
+    .account-action-description {
+        font-size: 12px;
+    }
+
+}
+
+</style>
+
+
+</head>
+
+
+<body>
+
+
+    <!-- ==========================================
+         HEADER
+    ========================================== -->
+
+    <header class="profile-header">
+
+        <a
+            href="index.html"
+            class="profile-back-button"
+            aria-label="Back to Home"
+        >
+            ←
+        </a>
+
+
+        <h1 class="profile-header-title">
+            🏠 To-Let Finder
+        </h1>
+
+    </header>
+
+
+
+    <!-- ==========================================
+         PROFILE CONTENT
+    ========================================== -->
+
+    <main>
+
+        <section class="profile-page">
+
+            <div class="profile-container">
+
+                <!-- ACCOUNT INFORMATION -->
+
+                <div class="account-info-card">
+
+                    <div class="account-avatar">
+                        👤
+                    </div>
+
+
+                    <div>
+
+                        <p class="account-email-label">
+                            Email address
+                        </p>
+
+                        <p
+                            class="account-email"
+                            id="account-email"
+                        >
+                            Loading...
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- MY ACCOUNT -->
+
+                <h2 class="my-account-title">
+                    My Account
+                </h2>
+
+
+
+                <!-- POST PROPERTY -->
+
+                <a
+                    href="#"
+                    class="account-action-card"
+                    id="post-property-profile"
+                >
+
+                    <div class="account-action-icon">
+                        🏠
+                    </div>
+
+
+                    <div class="account-action-content">
+
+                        <h3 class="account-action-title">
+                            Post Your Property
+                        </h3>
+
+                        <p class="account-action-description">
+                            Share your property with others
+                        </p>
+
+                    </div>
+
+
+                    <div class="account-action-arrow">
+                        →
+                    </div>
+
+                </a>
+
+
+
+                <!-- LIKED PROPERTIES -->
+
+                
+<a
+    href="liked-properties.html"
+    class="account-action-card"
+    id="liked-properties-profile"
+>
+
+           
+
+                    <div class="account-action-icon">
+                        ♡
+                    </div>
+
+
+                    <div class="account-action-content">
+
+                        <h3 class="account-action-title">
+                            Liked Properties
+                        </h3>
+
+                        <p class="account-action-description">
+                            View your liked properties
+                        </p>
+
+                    </div>
+
+
+                    <div class="account-action-arrow">
+                        →
+                    </div>
+
+                </a>
+
+
+
+                <!-- LOG OUT -->
+
+                <button
+                    type="button"
+                    class="logout-button"
+                    id="logout-button"
+                >
+
+                    <span class="logout-icon">
+                        ⇥
+                    </span>
+
+                    <span class="logout-text">
+                        Log Out
+                    </span>
+
+                </button>
+
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+
+    <!-- ==========================================
+         SUPABASE
+    ========================================== -->
+
+    <script
+        src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"
+    ></script>
+
+
+    <script src="script.js"></script>
+
+
+    <!-- ==========================================
+         PROFILE JAVASCRIPT
+    ========================================== -->
+
+    <script>
+
+        const accountEmail =
+            document.getElementById(
+                "account-email"
+            );
+
+
+        const postPropertyButton =
+            document.getElementById(
+                "post-property-profile"
+            );
+
+
+        const likedPropertiesButton =
+            document.getElementById(
+                "liked-properties-profile"
+            );
+
+
+        const logoutButton =
+            document.getElementById(
+                "logout-button"
+            );
+
+
+
+        /* ==========================================
+           LOAD ACCOUNT
+        ========================================== */
+
+        async function loadProfileAccount() {
+
+            const {
+                data
+            } =
+                await supabaseClient.auth.getSession();
+
+
+            const session =
+                data
+                    ? data.session
+                    : null;
+
+
+            /* ==========================================
+               LOGGED IN
+            ========================================== */
+
+            if (session) {
+
+                accountEmail.textContent =
+                    session.user.email;
+
+
+                /*
+                   POST PROPERTY
+
+                   Logged-in user can continue.
+                */
+
+                postPropertyButton.addEventListener(
+                    "click",
+                    function(event) {
+
+                        event.preventDefault();
+
+                        window.location.href =
+                            "post-property.html";
+
+                    }
+                );
+
+
+                /*
+                   LOG OUT
+                */
+
+                logoutButton.addEventListener(
+                    "click",
+                    async function() {
+
+                        logoutButton.disabled =
+                            true;
+
+                        logoutButton.querySelector(
+                            ".logout-text"
+                        ).textContent =
+                            "Logging out...";
+
+
+                        const {
+                            error
+                        } =
+                            await supabaseClient.auth.signOut();
+
+
+                        if (error) {
+
+                            logoutButton.disabled =
+                                false;
+
+                            logoutButton.querySelector(
+                                ".logout-text"
+                            ).textContent =
+                                "Log Out";
+
+                            alert(
+                                "Unable to log out. Please try again."
+                            );
+
+                            return;
+
+                        }
+
+
+                        window.location.replace(
+                            "login.html"
+                        );
+
+                    }
+                );
+
+            }
+
+
+            /* ==========================================
+               NOT LOGGED IN
+            ========================================== */
+
+            else {
+
+                accountEmail.textContent =
+                    "Not logged in";
+
+
+                /*
+                   POST PROPERTY REQUIRES LOGIN
+                */
+
+                postPropertyButton.addEventListener(
+                    "click",
+                    function(event) {
+
+                        event.preventDefault();
+
+                        window.location.href =
+                            "login.html";
+
+                    }
+                );
+
+
+                /*
+                   LIKED PROPERTIES
+
+                   Login will be required later.
+                */
+
+                likedPropertiesButton.addEventListener(
+                    "click",
+                    function(event) {
+
+                        event.preventDefault();
+
+                        alert(
+                            "Please log in to view your liked properties."
+                        );
+
+                    }
+                );
+
+
+                /*
+                   LOG OUT IS NOT NEEDED
+                   WHEN USER IS NOT LOGGED IN.
+                */
+
+                logoutButton.style.display =
+                    "none";
+
+            }
+
+        }
+
+
+        loadProfileAccount();
+
+    </script>
+
+
+</body>
+
+</html>
