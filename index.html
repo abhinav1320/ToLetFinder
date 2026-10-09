@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        To-Let Finder
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
+</head>
+
+
+<body>
+
+
+<header class="home-header">
+
+    <h1>
+        🏠 To-Let Finder
+    </h1>
+
+
+    <div class="home-search">
+
+        <span>
+            🔍
+        </span>
+
+        <input
+            type="text"
+            id="home-search"
+            placeholder="Search for houses"
+        >
+
+        <button
+            type="button"
+            id="home-search-button"
+        >
+            Search
+        </button>
+
+    </div>
+
+
+    <button
+        type="button"
+        class="profile-button"
+        id="profile-button"
+    >
+        👤
+    </button>
+
+</header>
+
+
+
+<main>
+
+
+    <!-- ==========================================
+         MAP COVER
+    =========================================== -->
+
+    <section class="hero-section">
+
+        <img
+            src="images/Map1.png"
+            alt="Explore rental properties on map"
+            class="hero-image"
+        >
+
+
+        <h2 class="map-cover-title">
+            Find rentals through maps
+        </h2>
+
+
+        <div class="hero-content">
+
+            <button
+                type="button"
+                id="explore-more-button"
+            >
+                Explore More
+            </button>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ==========================================
+         FILTER SECTION
+    =========================================== -->
+
+    <section class="home-filter-section">
+
+
+        <!-- Filter button -->
+
+        <button
+            type="button"
+            class="filters-toggle"
+            id="filters-toggle"
+            aria-expanded="false"
+        >
+
+            <span>
+                Filters
+            </span>
+
+            <span id="filters-arrow">
+                ▼
+            </span>
+
+        </button>
+
+
+
+        <!-- Filter panel -->
+
+        <div
+            class="filters-panel"
+            id="filters-panel"
+            hidden
+        >
+
+
+            <!-- Maximum Rent -->
+
+            <div class="filter-item">
+
+                <label>
+                    Maximum Rent
+                </label>
+
+                <button
+                    type="button"
+                    class="filter-selector"
+                    data-filter="rent"
+                >
+
+                    <span id="filter-rent-value">
+                        Any
+                    </span>
+
+                    <span class="selector-arrow">
+                        ▼
+                    </span>
+
+                </button>
+
+
+                <div
+                    class="filter-options"
+                    id="rent-options"
+                >
+
+                    <button
+                        type="button"
+                        data-value=""
+                    >
+                        Any
+                    </button>
+
+                    <button
+                        type="button"
+                        data-value="5000"
+                    >
+                        ₹5,000
+                    </button>
+
+                    <button
+                        type="button"
+                        data-value="10000"
+                    >
+                        ₹10,000
+                    </button>
+
+                    <button
+                        type="button"
+                        data-value="15000"
+                    >
+                        ₹15,000
+                    </button>
+
+                    <button
+                        type="button"
+                        data-value="20000"
+                    >
+                        ₹20,000
+                    </button>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- Property Type -->
+
+            <div class="filter-item">
+
+                <label>
+                    Property Type
+                </label>
+
+                <button
+                    type="button"
+                    class="filter-selector"
+                    data-filter="property-type"
+                >
+
+                    <span id="filter-property-type-value">
+                        Any
+                    </span>
+
+                    <span class="selector-arrow">
+                        ▼
+                    </span>
+
+                </button>
+
+
+                <div
+                    class="filter-options"
+                    id="property-type-options"
+                >
+
+                    <button
+                        type="button"
+                        data-value=""
+                    >
+                        Any
+                    </button>
+
+                    <button
+                        type="button"
+                        data-value="1 BHK"
+                    >
+                        1 BHK
+                    </button>
+
+                    <button
+                        type="button"
+                        data-value="2 BHK"
+                    >
+                        2 BHK
+                    </button>
+
+                    <button
+                        type="button"
+                        data-value="3 BHK"
+                    >
+                        3 BHK
+                    </button>
+
+                    <button
+                        type="button"
+                        data-value="4 BHK"
+                    >
+                        4 BHK
+                    </button>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- Bedrooms -->
+
+            <div class="filter-item">
+
+                <label>
+                    Bedrooms
+                </label>
+
+                <button
+                    type="button"
+                    class="filter-selector"
+                    data-filter="bedrooms"
+                >
+
+                    <span id="filter-bedrooms-value">
+                        Any
+                    </span>
+
+                    <span class="selector-arrow">
+                        ▼
+                    </span>
+
+                </button>
+
+
+                <div
+                    class="filter-options"
+                    id="bedrooms-options"
+                >
+
+                    <button
+                        type="button"
+                        data-value=""
+                    >
+                        Any
+                    </button>
+
+                    <button
+                        type="button"
+                        data-value="1"
+                    >
+                        1
+                    </button>
+
+                    <button
+                        type="button"
+                        data-value="2"
+                    >
+                        2
+                    </button>
+
+                    <button
+                        type="button"
+                        data-value="3"
+                    >
+                        3
+                    </button>
+
+                    <button
+                        type="button"
+                        data-value="4"
+                    >
+                        4
+                    </button>
+
+                    <button
+                        type="button"
+                        data-value="5"
+                    >
+                        5+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- Bathrooms -->
+
+            <div class="filter-item">
+
+                <label>
+                    Bathrooms
+                </label>
+
+                <button
+                    type="button"
+                    class="filter-selector"
+                    data-filter="bathrooms"
+                >
+
+                    <span id="filter-bathrooms-value">
+                        Any
+                    </span>
+
+                    <span class="selector-arrow">
+                        ▼
+                    </span>
+
+                </button>
+
+
+                <div
+                    class="filter-options"
+                    id="bathrooms-options"
+                >
+
+                    <button
+                        type="button"
+                        data-value=""
+                    >
+                        Any
+                    </button>
+
+                    <button
+                        type="button"
+                        data-value="1"
+                    >
+                        1
+                    </button>
+
+                    <button
+                        type="button"
+                        data-value="2"
+                    >
+                        2
+                    </button>
+
+                    <button
+                        type="button"
+                        data-value="3"
+                    >
+                        3
+                    </button>
+
+                    <button
+                        type="button"
+                        data-value="4"
+                    >
+                        4+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- Parking -->
+
+            <div class="filter-item">
+
+                <label>
+                    Parking
+                </label>
+
+                <button
+                    type="button"
+                    class="filter-selector"
+                    data-filter="parking"
+                >
+
+                    <span id="filter-parking-value">
+                        Any
+                    </span>
+
+                    <span class="selector-arrow">
+                        ▼
+                    </span>
+
+                </button>
+
+
+                <div
+                    class="filter-options"
+                    id="parking-options"
+                >
+
+                    <button
+                        type="button"
+                        data-value=""
+                    >
+                        Any
+                    </button>
+
+                    <button
+                        type="button"
+                        data-value="yes"
+                    >
+                        Yes
+                    </button>
+
+                    <button
+                        type="button"
+                        data-value="no"
+                    >
+                        No
+                    </button>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- Water -->
+
+            <div class="filter-item">
+
+                <label>
+                    Water
+                </label>
+
+                <button
+                    type="button"
+                    class="filter-selector"
+                    data-filter="water"
+                >
+
+                    <span id="filter-water-value">
+                        Any
+                    </span>
+
+                    <span class="selector-arrow">
+                        ▼
+                    </span>
+
+                </button>
+
+
+                <div
+                    class="filter-options"
+                    id="water-options"
+                >
+
+                    <button
+                        type="button"
+                        data-value=""
+                    >
+                        Any
+                    </button>
+
+                    <button
+                        type="button"
+                        data-value="yes"
+                    >
+                        Yes
+                    </button>
+
+                    <button
+                        type="button"
+                        data-value="no"
+                    >
+                        No
+                    </button>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- Filter buttons -->
+
+            <div class="filter-actions">
+
+                <button
+                    type="button"
+                    id="apply-filters"
+                >
+                    Apply Filters
+                </button>
+
+
+                <button
+                    type="button"
+                    id="clear-filters"
+                >
+                    Clear
+                </button>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ==========================================
+         AVAILABLE HOUSES
+    =========================================== -->
+
+    <section class="home-properties">
+
+        <h2>
+            Available Houses
+        </h2>
+
+
+        <div id="home-property-list">
+
+            <p>
+                Loading houses...
+            </p>
+
+        </div>
+
+    </section>
+
+
+</main>
+
+
+
+<!-- Supabase -->
+
+<script
+    src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"
+></script>
+
+
+<!-- Main JavaScript -->
+
+<script src="script.js"></script>
+
+
+</body>
+
+</html>
