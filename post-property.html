@@ -1,0 +1,374 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Post Your Property - To-Let Finder
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
+</head>
+
+
+<body>
+
+
+<header>
+
+    <h1>
+        🏠 To-Let Finder
+    </h1>
+
+</header>
+
+
+<main>
+
+    <h2>
+        Post Your Property
+    </h2>
+
+    <p>
+        Tell us about the house you want to rent.
+    </p>
+
+
+    <form id="property-form">
+
+
+        <label>
+            Property Type
+        </label>
+
+        <select
+            id="property-type"
+            required
+        >
+
+            <option>
+                1 BHK
+            </option>
+
+            <option>
+                2 BHK
+            </option>
+
+            <option>
+                3 BHK
+            </option>
+
+            <option>
+                4 BHK
+            </option>
+
+        </select>
+
+
+        <label>
+            Owner Name
+        </label>
+
+        <input
+            type="text"
+            id="owner-name"
+            placeholder="Enter your name"
+            required
+        >
+
+
+        <label>
+            Phone Number
+        </label>
+
+        <input
+            type="tel"
+            id="phone-number"
+            placeholder="Enter your phone number"
+            required
+        >
+
+
+        <label>
+            Monthly Rent
+        </label>
+
+        <input
+            type="number"
+            id="monthly-rent"
+            placeholder="Enter monthly rent"
+            required
+        >
+
+
+        <label>
+    Property Location
+</label>
+
+<input
+    type="text"
+    id="property-location"
+    placeholder="Enter property location"
+    required
+>
+
+<button
+    type="button"
+    id="get-location-button"
+>
+    📍 Use My Current Location
+</button>
+
+<p id="location-status"></p>
+
+
+        <label>
+            Bedrooms
+        </label>
+
+        <input
+            type="number"
+            id="bedrooms"
+            placeholder="Number of bedrooms"
+            required
+        >
+
+
+        <label>
+            Bathrooms
+        </label>
+
+        <input
+            type="number"
+            id="bathrooms"
+            placeholder="Number of bathrooms"
+        >
+
+
+        <label>
+            Parking
+        </label>
+
+        <select id="parking">
+
+            <option>
+                Yes
+            </option>
+
+            <option>
+                No
+            </option>
+
+        </select>
+
+
+        <label>
+            Water
+        </label>
+
+        <select id="water">
+
+            <option>
+                Yes
+            </option>
+
+            <option>
+                No
+            </option>
+
+        </select>
+
+
+        <label>
+            Description
+        </label>
+
+        <textarea
+            id="description"
+            placeholder="Describe your property"
+            rows="5"
+        ></textarea>
+
+
+        <label>
+            Property Photos
+        </label>
+
+
+        <input
+            type="file"
+            id="photo-input"
+            accept="image/*"
+            multiple
+        >
+
+
+        <label
+            for="photo-input"
+            class="upload-button"
+        >
+            Upload Photos
+        </label>
+
+
+        <div id="photo-preview"></div>
+
+
+        <button type="submit">
+            Post Property
+        </button>
+
+
+    </form>
+
+</main>
+
+
+<script>
+const getLocationButton =
+    document.getElementById(
+        "get-location-button"
+    );
+
+const locationStatus =
+    document.getElementById(
+        "location-status"
+    );
+
+let propertyLatitude = null;
+let propertyLongitude = null;
+
+
+getLocationButton.addEventListener(
+    "click",
+    function() {
+
+        if (!navigator.geolocation) {
+
+            locationStatus.textContent =
+                "Location is not supported on this device.";
+
+            return;
+        }
+
+
+        locationStatus.textContent =
+            "📍 Getting your location...";
+
+
+        navigator.geolocation.getCurrentPosition(
+
+            function(position) {
+
+                propertyLatitude =
+                    position.coords.latitude;
+
+                propertyLongitude =
+                    position.coords.longitude;
+
+
+                locationStatus.textContent =
+                    "✅ Property location captured!";
+
+
+                console.log(
+                    "Latitude:",
+                    propertyLatitude
+                );
+
+                console.log(
+                    "Longitude:",
+                    propertyLongitude
+                );
+
+            },
+
+
+            function(error) {
+
+                locationStatus.textContent =
+                    "❌ Unable to get location. Please allow location permission.";
+
+                console.log(
+                    "Location error:",
+                    error.message
+                );
+
+            }
+
+        );
+
+    }
+);
+const photoInput =
+    document.getElementById(
+        "photo-input"
+    );
+
+const photoPreview =
+    document.getElementById(
+        "photo-preview"
+    );
+
+
+photoInput.addEventListener(
+    "change",
+    function() {
+
+        photoPreview.innerHTML = "";
+
+
+        for (
+            const file of photoInput.files
+        ) {
+
+            const image =
+                document.createElement(
+                    "img"
+                );
+
+
+            image.src =
+                URL.createObjectURL(
+                    file
+                );
+
+
+            photoPreview.appendChild(
+                image
+            );
+
+        }
+
+    }
+);
+
+</script>
+
+
+<!-- Supabase library -->
+<script
+    src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"
+></script>
+
+
+<!-- Main JavaScript -->
+<script src="script.js"></script>
+
+
+</body>
+
+</html>
+
