@@ -1,4 +1,4 @@
-
+alert("Latest script.js loaded");
 /* =========================================================
    TO-LET FINDER
    Complete corrected script.js
